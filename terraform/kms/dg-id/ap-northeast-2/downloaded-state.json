@@ -1,0 +1,466 @@
+{
+  "version": 4,
+  "terraform_version": "1.10.4",
+  "serial": 6,
+  "lineage": "f4e98c7d-a19c-406b-5ee9-5fe897a240f4",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "assume_id_admin_assume_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "2369312406",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"AWS\": \"arn:aws:iam::545009828941:root\"\n      }\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRole\",\"Principal\":{\"AWS\":\"arn:aws:iam::545009828941:root\"}}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "sts:AssumeRole"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "arn:aws:iam::545009828941:root"
+                    ],
+                    "type": "AWS"
+                  }
+                ],
+                "resources": [],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "assume_id_admin_pass_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "4184222603",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iam:PassRole\",\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"iam:PassRole\",\"Resource\":\"*\"}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "iam:PassRole"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "*"
+                ],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_group",
+      "name": "devops_black",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::545009828941:group/devops_black",
+            "id": "devops_black",
+            "name": "devops_black",
+            "path": "/",
+            "unique_id": "AGPAX5ZI6ARGQWL7ZKM7H"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_group_membership",
+      "name": "devops_black",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "devops_black",
+            "id": "devops_black",
+            "name": "devops_black",
+            "users": [
+              "mong_user"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_group.devops_black",
+            "aws_iam_user.mong_user"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_group_policy_attachment",
+      "name": "devops_black",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "group": "devops_black",
+            "id": "devops_black-20250309140917030300000001",
+            "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_group.devops_black"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "app_universal",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::545009828941:policy/app-universal",
+            "attachment_count": 0,
+            "description": "",
+            "id": "arn:aws:iam::545009828941:policy/app-universal",
+            "name": "app-universal",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":\"s3:GetObject\",\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::tmc-service-deployment/demoapp/*\"],\"Sid\":\"AllowAnsibleArtifactAccess\"},{\"Action\":[\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::tmc-service-deployment\",\"arn:aws:s3:::tmc-service-deployment/*\"],\"Sid\":\"AllowArtifactsReadAccess\"},{\"Action\":[\"ec2:DescribeInstances\",\"ec2:DescribeSpotInstanceRequests\",\"ec2:DescribeTags\",\"ec2:CreateTags\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"AllowAnsibleCreateDescribeEc2TagsAccess\"},{\"Action\":[\"ssm:UpdateInstanceInformation\",\"ssmmessages:CreateControlChannel\",\"ssmmessages:CreateDataChannel\",\"ssmmessages:OpenControlChannel\",\"ssmmessages:OpenDataChannel\",\"ssm:ListAssociations\",\"ssm:ListInstanceAssociations\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"s3:GetEncryptionConfiguration\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"ec2messages:AcknowledgeMessage\",\"ec2messages:DeleteMessage\",\"ec2messages:FailMessage\",\"ec2messages:GetEndpoint\",\"ec2messages:GetMessages\",\"ec2messages:SendReply\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"secretsmanager:GetResourcePolicy\",\"secretsmanager:GetSecretValue\",\"secretsmanager:DescribeSecret\",\"secretsmanager:ListSecretVersionIds\"],\"Effect\":\"Allow\",\"Resource\":[\"*\"]},{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:DescribeLogGroups\",\"logs:DescribeLogStreams\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPAX5ZI6ARGVJOJ3GEIY",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "assume_id_admin",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::545009828941:role/assume-id-admin",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::545009828941:root\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-03-09T14:11:00Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "assume-id-admin",
+            "inline_policy": [
+              {
+                "name": "assume-id-admin-passrole",
+                "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"iam:PassRole\",\"Effect\":\"Allow\",\"Resource\":\"*\"}]}"
+              }
+            ],
+            "managed_policy_arns": [
+              "arn:aws:iam::aws:policy/AdministratorAccess"
+            ],
+            "max_session_duration": 43200,
+            "name": "assume-id-admin",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAX5ZI6ARGY7ZR77C4X"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.aws_iam_policy_document.assume_id_admin_assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "assume_id_admin_passrole",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "assume-id-admin:assume-id-admin-passrole",
+            "name": "assume-id-admin-passrole",
+            "name_prefix": "",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"iam:PassRole\",\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+            "role": "assume-id-admin"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.assume_id_admin",
+            "data.aws_iam_policy_document.assume_id_admin_assume_role",
+            "data.aws_iam_policy_document.assume_id_admin_pass_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "assume_id_admin",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "assume-id-admin-20250309141101744700000001",
+            "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess",
+            "role": "assume-id-admin"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.assume_id_admin",
+            "data.aws_iam_policy_document.assume_id_admin_assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_user",
+      "name": "mong_user",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::545009828941:user/mong_user",
+            "force_destroy": false,
+            "id": "mong_user",
+            "name": "mong_user",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AIDAX5ZI6ARGYBSNTE2JY"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.sops_dg-id",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "common",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::545009828941:role/dg-id-sops",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":[\"arn:aws:iam::545009828941:root\"]},\"Sid\":\"\"}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-03-09T14:26:23Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "dg-id-sops",
+            "inline_policy": [
+              {
+                "name": "dg-id-sops-passrole",
+                "policy": "{\"Statement\":[{\"Action\":[\"iam:PassRole\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"AllowIAMPassRole\"}]}"
+              }
+            ],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "dg-id-sops",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAX5ZI6ARGUJUYRD6HA"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.sops_dg-id",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "secure",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::545009828941:role/dg-id-secure-sops",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":[\"arn:aws:iam::545009828941:root\"]},\"Sid\":\"\"}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-03-09T14:26:23Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "dg-id-secure-sops",
+            "inline_policy": [
+              {
+                "name": "dg-id-secure-sops-passrole",
+                "policy": "{\"Statement\":[{\"Action\":[\"iam:PassRole\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"AllowIAMPassRole\"}]}"
+              }
+            ],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "dg-id-secure-sops",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROAX5ZI6ARG6AJ4O3FRO"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.sops_dg-id",
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "common-passrole",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "dg-id-sops:dg-id-sops-passrole",
+            "name": "dg-id-sops-passrole",
+            "name_prefix": "",
+            "policy": "{\"Statement\":[{\"Action\":[\"iam:PassRole\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"AllowIAMPassRole\"}]}",
+            "role": "dg-id-sops"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.sops_dg-id.aws_iam_role.common"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.sops_dg-id",
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "secure-passrole",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "dg-id-secure-sops:dg-id-secure-sops-passrole",
+            "name": "dg-id-secure-sops-passrole",
+            "name_prefix": "",
+            "policy": "{\"Statement\":[{\"Action\":[\"iam:PassRole\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"AllowIAMPassRole\"}]}",
+            "role": "dg-id-secure-sops"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.sops_dg-id.aws_iam_role.secure"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": [
+    {
+      "object_kind": "var",
+      "config_addr": "module.sops_dg-id.var.allowed_arns_for_secure",
+      "status": "pass",
+      "objects": [
+        {
+          "object_addr": "module.sops_dg-id.var.allowed_arns_for_secure",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "object_kind": "var",
+      "config_addr": "module.sops_dg_id.var.allowed_arns_for_common",
+      "status": "pass",
+      "objects": [
+        {
+          "object_addr": "module.sops_dg_id.var.allowed_arns_for_common",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "object_kind": "var",
+      "config_addr": "module.sops_dg_id.var.allowed_arns_for_secure",
+      "status": "pass",
+      "objects": [
+        {
+          "object_addr": "module.sops_dg_id.var.allowed_arns_for_secure",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "object_kind": "var",
+      "config_addr": "module.sops_dg-id.var.allowed_arns_for_common",
+      "status": "pass",
+      "objects": [
+        {
+          "object_addr": "module.sops_dg-id.var.allowed_arns_for_common",
+          "status": "pass"
+        }
+      ]
+    }
+  ]
+}

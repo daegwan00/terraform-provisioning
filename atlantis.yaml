@@ -13,68 +13,63 @@ projects:
     apply_requirements: []
     workflow: id
 
-#   - name: vpc/tmcd_apnortheast2
-#     dir: terraform/vpc/tmcd_apnortheast2
-#     workspace: default
-#     terraform_version: 1.7.0
-#     autoplan:
-#       when_modified: [
-#          "*.tf",
-#          "*.tfvars"
-#       ]
-#       enabled: true
-#     apply_requirements: []
-#     workflow: id
+  #   - name: vpc/tmcd_apnortheast2
+  #     dir: terraform/vpc/tmcd_apnortheast2
+  #     workspace: default
+  #     terraform_version: 1.7.0
+  #     autoplan:
+  #       when_modified: [
+  #          "*.tf",
+  #          "*.tfvars"
+  #       ]
+  #       enabled: true
+  #     apply_requirements: []
+  #     workflow: id
 
-#   - name: vpc/testd_apnortheast2
-#     dir: terraform/vpc/testd_apnortheast2
-#     workspace: default
-#     terraform_version: 1.5.7
-#     autoplan:
-#       when_modified: [
-#          "*.tf",
-#           "*.tfvars"
-#       ]
-#       enabled: true
-#     apply_requirements: []
-#     workflow: id
+  #   - name: vpc/testd_apnortheast2
+  #     dir: terraform/vpc/testd_apnortheast2
+  #     workspace: default
+  #     terraform_version: 1.5.7
+  #     autoplan:
+  #       when_modified: [
+  #          "*.tf",
+  #           "*.tfvars"
+  #       ]
+  #       enabled: true
+  #     apply_requirements: []
+  #     workflow: id
 
-#   - name: iam/dg-id
-#     dir: terraform/iam/dg-id
-#     workspace: default
-#     terraform_version: 1.7.0
-#     autoplan:
-#       when_modified: [
-#          "*.tf"
-#       ]
-#       enabled: true
-#     apply_requirements: []
-#     workflow: id
+  #   - name: iam/dg-id
+  #     dir: terraform/iam/dg-id
+  #     workspace: default
+  #     terraform_version: 1.7.0
+  #     autoplan:
+  #       when_modified: [
+  #          "*.tf"
+  #       ]
+  #       enabled: true
+  #     apply_requirements: []
+  #     workflow: id
 
-#   - name: kms/dg-id/ap-northeast-2
-#     dir: terraform/kms/dg-id/ap-northeast-2
-#     workspace: default
-#     terraform_version: 1.7.0
-#     autoplan:
-#       when_modified: [
-#          "*.tf"
-#       ]
-#       enabled: true
-#     apply_requirements: []
-#     workflow: id
+  - name: kms/dg-id/ap-northeast-2
+    dir: terraform/kms/dg-id/ap-northeast-2
+    workspace: default
+    terraform_version: 1.7.0
+    autoplan:
+      when_modified: ["*.tf"]
+      enabled: true
+    apply_requirements: []
+    workflow: id
 
-#   - name: ssm/dg-id/ap-northeast-2
-#     dir: terraform/ssm/dg-id/ap-northeast-2
-#     workspace: default
-#     terraform_version: 1.7.0
-#     autoplan:
-#       when_modified: [
-#          "*.tf",
-#          "secrets.sops.yaml"
-#       ]
-#       enabled: true
-#     apply_requirements: []
-#     workflow: id
+  - name: ssm/dg-id/ap-northeast-2
+    dir: terraform/ssm/dg-id/ap-northeast-2
+    workspace: default
+    terraform_version: 1.7.0
+    autoplan:
+      when_modified: ["*.tf", "secrets.sops.yaml"]
+      enabled: true
+    apply_requirements: []
+    workflow: id
 
 #   - name: ecr/dg-id/ap-northeast-2
 #     dir: terraform/ecr/dg-id/ap-northeast-2
