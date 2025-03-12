@@ -11,5 +11,5 @@ variable "atlantis_user" {
 variable "owner" {
   description = "GitHub owner used to configure the provider"
   type        = string
-  default     = "daegwan00"
+  default     = "DevopsArtFactory"
 }
