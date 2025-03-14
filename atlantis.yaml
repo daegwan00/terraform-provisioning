@@ -215,7 +215,18 @@ projects:
   #     apply_requirements: []
   #     workflow: id
   # ### github
-  - name: github/terraform-provisioning         #springboot-sample  cp -r spingboot-sapmle terraform-provisiong 해서 이렇게 된거
+
+  - name: github/springboot-sample #springboot-sample  cp -r spingboot-sapmle terraform-provisiong 해서 이렇게 된거
+    dir: github/springboot-sample
+    workspace: default
+    terraform_version: 1.7.0
+    autoplan:
+      when_modified: ["*.tf", "*.yaml"]
+      enabled: true
+    apply_requirements: []
+    workflow: github
+
+  - name: github/terraform-provisioning #springboot-sample  cp -r spingboot-sapmle terraform-provisiong 해서 이렇게 된거
     dir: github/terraform-provisioning
     workspace: default
     terraform_version: 1.7.0
@@ -343,23 +354,23 @@ workflows:
         - apply
 
   # # github
-  # github:
-  #   plan:
-  #     steps:
-  #       - init:
-  #           extra_args:
-  #             [
-  #               '-backend-config="role_arn=arn:aws:iam::066346343248:role/atlantis-dg-id-admin"',
-  #               "-upgrade=false",
-  #             ]
-  #       - plan:
-  #           extra_args:
-  #             [
-  #               "-var 'assume_role_arn=arn:aws:iam::066346343248:role/atlantis-dg-id-admin'",
-  #             ]
-  #   apply:
-  #     steps:
-  #       - apply
+  github:
+    plan:
+      steps:
+        - init:
+            extra_args:
+              [
+                '-backend-config="role_arn=arn:aws:iam::066346343248:role/atlantis-dg-id-admin"',
+                "-upgrade=false",
+              ]
+        - plan:
+            extra_args:
+              [
+                "-var 'assume_role_arn=arn:aws:iam::066346343248:role/atlantis-dg-id-admin'",
+              ]
+    apply:
+      steps:
+        - apply
   # # datadog
   # datadog:
   #   plan:
