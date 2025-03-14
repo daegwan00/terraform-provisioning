@@ -63,15 +63,15 @@ projects:
     apply_requirements: []
     workflow: id
 
-  - name: ecr/dg-id/ap-northeast-2
-    dir: terraform/ecr/dg-id/ap-northeast-2
-    workspace: default
-    terraform_version: 1.7.0
-    autoplan:
-      when_modified: ["*.tf"]
-      enabled: true
-    apply_requirements: []
-    workflow: id
+  # - name: ecr/dg-id/ap-northeast-2
+  #   dir: terraform/ecr/dg-id/ap-northeast-2
+  #   workspace: default
+  #   terraform_version: 1.7.0
+  #   autoplan:
+  #     when_modified: ["*.tf"]
+  #     enabled: true
+  #   apply_requirements: []
+  #   workflow: id
 
   - name: securitygroup/dg-id/tmcd_apnortheast2
     dir: terraform/securitygroup/dg-id/tmcd_apnortheast2
@@ -216,16 +216,7 @@ projects:
     apply_requirements: []
     workflow: github
 
-  - name: iam/dg-id
-    dir: terraform/iam/dg-id
-    workspace: default
-    terraform_version: 1.7.0
-    autoplan:
-      when_modified: ["*.tf"]
-      enabled: true
-    apply_requirements: []
-    workflow: github
-
+#
 # ### datadog
 #   - name: datadog/integration
 #     dir: datadog/integration
